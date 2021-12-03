@@ -1,9 +1,10 @@
 {
-  "Title": "Bingo",
+  "Title": "Movie Bingo",
   "Version": "1.0.0",
   "author": "Matt Olsen",
   "scripts": {
-    "start": "nodemon /database/server/index.js",
+    "start": "nodemon backend/server/index.js",
+    "node": "node backend/server/index.js",
     "react-dev": "webpack --config ./webpack.config.js --mode development -w"
   },
   "dependencies": {
