@@ -7,7 +7,7 @@ body {
 
 .text{
   text-align: center;
-  font-size: 100%;
+  /* font-size: 100%; */
   color: rgb(146, 39, 207);
 }
 
@@ -23,10 +23,11 @@ h1{
 .card{
   display: flex;
   background-color: black;
-  border: 4px solid black;
+  border: 3px solid black;
   border-radius: 20px;
   flex-direction: row;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .card-col{
@@ -38,7 +39,7 @@ h1{
   width: 100%;
   height: 200px;
   background-color: rgb(162, 123, 212);
-  border: 3px solid black;
+  /* border: 3px solid black; */
   border-radius: 20px;
   text-overflow: ellipsis;
   font-size: 50px;

@@ -9,31 +9,11 @@ import Header from './header/Header.jsx';
 export const BingoContext = React.createContext();
 
 export default function App() {
-  const items1 = ['Obvious fake moustache',
-    'Squeaky door sound',
-    'First person view',
-    'Going rouge',
-    'Old truck',
-    'Vehicle breakdown',
-    'No phone service',
-    'Obsolete tech',
-    'Hiding under a bed',
-    'Costumes',
-    'Dirty bathroom',
-    'Black and White film',
-    'Unconventional weapon',
-    'Bad accent',
-    'Law enforcement',
-    'Mental hospital',
-    'Car ride conversation',
-    'Close call',
-    'Plot call back',
-    'Mental breakdown'];
-  // const [user, setUser] = useState();
+  const [boardState, setBoardState] = useState([[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]);
   const [items, setItems] = useState([]);
 
   const getItems = () => {
-    // call server and get Items
+    // call server and get card items
     axios.get('/card')
       .then((response) => {
         console.log('response', response);
@@ -41,14 +21,17 @@ export default function App() {
       });
   };
 
+  const changeBoardState = () => {
+    setBoardState();
+  };
+
   useEffect(() => {
-    // console.log('here');
     getItems();
   }, []);
 
   return (
     <div>
-      <BingoContext.Provider value={{ items }}>
+      <BingoContext.Provider value={{ items, changeBoardState }}>
         <div>
           <Header />
           <Card />
