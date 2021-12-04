@@ -1,14 +1,17 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
+/* eslint-disable import/no-cycle */
 /* eslint-disable import/extensions */
 /* eslint-disable react/function-component-definition */
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { shuffle } from '../helperFunctions.js';
+import { shuffle, checkForWin } from '../helperFunctions.js';
 import Card from './card/Card.jsx';
 import Header from './header/Header.jsx';
 
 export const BingoContext = React.createContext();
 
 export default function App() {
+  const [headerText, setHeaderText] = useState('Scary Movie Bingo');
   const [boardState, setBoardState] = useState(
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   );
@@ -41,11 +44,15 @@ export default function App() {
 
   useEffect(() => {
     postBoard();
+    if (checkForWin(boardState)) {
+      console.log('winner!!!');
+      setHeaderText('!!!  WINNER  !!!');
+    }
   }, [boardState]);
 
   return (
     <div>
-      <BingoContext.Provider value={{ items, changeBoardState }}>
+      <BingoContext.Provider value={{ items, changeBoardState, headerText }}>
         <div>
           <Header />
           <Card />

@@ -1,11 +1,15 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-cycle */
 /* eslint-disable react/function-component-definition */
-import React from 'react';
+import React, { useContext } from 'react';
+import { BingoContext } from '../App.jsx';
 // import { useState } from 'react-dom';
 
 export default function Header() {
+  const { headerText } = useContext(BingoContext);
   return (
     <div className="header">
-      <h1>Scary Movie Bingo</h1>
+      <h1 className="headerText">{headerText}</h1>
     </div>
   );
 }

@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable import/no-cycle */
 /* eslint-disable import/extensions */
 /* eslint-disable react/function-component-definition */
 import React, { useContext, useState } from 'react';
@@ -12,7 +14,6 @@ export default function Card() {
 
   const handleChangeColor = (id) => {
     document.getElementById(id).style.backgroundColor = selectedColor;
-    // TODO: change the boardState here
     changeBoardState(id);
   };
 

@@ -47,6 +47,7 @@ app.get('/card', (req, res) => {
 
 app.put('/updateboard', (req, res) => {
   console.log('put request', req.body);
+  res.send('update this');
 });
 
 app.listen(port, () => {
