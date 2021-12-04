@@ -47,7 +47,7 @@ export default function Login() {
         </form>
       </div>
 
-      {/* login to the room */}
+      {/* login to the room. */}
       <div className="login">
         <form onSubmit={ (event) => {
           event.preventDefault();
