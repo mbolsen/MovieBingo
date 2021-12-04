@@ -16,7 +16,7 @@ export default function Card() {
   );
   const { items, changeBoardState } = useContext(BingoContext);
 
-  const selectedColor = 'pink';
+  const selectedColor = 'blue';
   // screen.orientation.addEventListener('change', () => { setSize(document.body.clientWidth / 5); });
   screen.orientation.addEventListener('change', () => {
     setSize(
