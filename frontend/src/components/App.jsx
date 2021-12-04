@@ -9,7 +9,9 @@ import Header from './header/Header.jsx';
 export const BingoContext = React.createContext();
 
 export default function App() {
-  const [boardState, setBoardState] = useState([[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]);
+  const [boardState, setBoardState] = useState(
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  );
   const [items, setItems] = useState([]);
 
   const getItems = () => {
@@ -21,13 +23,25 @@ export default function App() {
       });
   };
 
-  const changeBoardState = () => {
-    setBoardState();
+  const postBoard = () => {
+    console.log(boardState);
+    const user = 'thisisme';
+    axios.put('/updateboard', { user, boardState });
+  };
+
+  const changeBoardState = (index) => {
+    const updatedBoard = [...boardState];
+    updatedBoard[index] = 1;
+    setBoardState(updatedBoard);
   };
 
   useEffect(() => {
     getItems();
   }, []);
+
+  useEffect(() => {
+    postBoard();
+  }, [boardState]);
 
   return (
     <div>

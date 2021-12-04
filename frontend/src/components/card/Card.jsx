@@ -4,8 +4,8 @@ import React, { useContext, useState } from 'react';
 import { BingoContext } from '../App.jsx';
 
 export default function Card() {
-  const [size, setSize] = useState(document.body.clientWidth / 5 - 6); // 6 is for the boarder of the .card
-  const { items } = useContext(BingoContext);
+  const [size, setSize] = useState(document.body.clientWidth / 5 - 6);
+  const { items, changeBoardState } = useContext(BingoContext);
 
   const selectedColor = 'pink';
   screen.orientation.addEventListener('change', () => { setSize(document.body.clientWidth / 5); });
@@ -13,40 +13,12 @@ export default function Card() {
   const handleChangeColor = (id) => {
     document.getElementById(id).style.backgroundColor = selectedColor;
     // TODO: change the boardState here
+    changeBoardState(id);
   };
 
   return (
     <div className="card">
-      { (console.log(size)) }
-      {/* <div className="card-col" style={{ width: size }}>
-        { items
-          ? items.slice(0, 5).map((item, index) => <div className="card-div" id={index} key={index} onClick={(e) => handleChangeColor(e)}>{ item }</div>)
-          : null }
-      </div>
-      <div className="card-col" style={{ width: size }}>
-        { items
-          ? items.slice(5, 10).map((item, index) => <div className="card-div" id={index + 5} key={index} onClick={(e) => handleChangeColor(e)}>{ item }</div>)
-          : null }
-      </div>
-      <div className="card-col" style={{ width: size }}>
-        { items
-          ? items.slice(10, 12).map((item, index) => <div className="card-div" id={index + 10} key={index} onClick={(e) => handleChangeColor(e)}>{ item }</div>)
-          : null }
-        <div className="card-div" style={{ fontSize: '100px', background: selectedColor }}>&#x2605;</div>
-        { items
-          ? items.slice(13, 15).map((item, index) => <div className="card-div" id={index + 10} key={index} onClick={(e) => handleChangeColor(e)}>{ item }</div>)
-          : null }
-      </div>
-      <div className="card-col" style={{ width: size }}>
-        { items
-          ? items.slice(15, 20).map((item, index) => <div className="card-div" id={index + 15} key={index} onClick={(e) => handleChangeColor(e)}>{ item }</div>)
-          : null }
-      </div>
-      <div className="card-col" style={{ width: size }}>
-        { items
-          ? items.slice(20, 25).map((item, index) => <div className="card-div" id={index + 20} key={index} onClick={(e) => handleChangeColor(e)}>{ item }</div>)
-          : null }
-      </div> */}
+      { (console.log('size', size)) }
       { items
         ? items.map((item, index) => {
           if (index === 12) {
@@ -69,7 +41,10 @@ export default function Card() {
               className="card-div"
               id={index}
               key={index}
-              onClick={(e) => handleChangeColor(index)}
+              onClick={(e) => {
+                e.preventDefault();
+                handleChangeColor(index);
+              }}
               style={{ width: size }}
             >
               <p>{ item }</p>

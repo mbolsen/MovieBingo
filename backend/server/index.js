@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
+app.use(express.json());
 
 app.use('/', express.static(path.join(__dirname, '..', '..', 'frontend', 'dist')));
 const port = 3000;
@@ -42,6 +43,10 @@ app.get('/card', (req, res) => {
   // console.log(req);
   // the items will change when we set up the database
   res.send(items);
+});
+
+app.put('/updateboard', (req, res) => {
+  console.log('put request', req.body);
 });
 
 app.listen(port, () => {
