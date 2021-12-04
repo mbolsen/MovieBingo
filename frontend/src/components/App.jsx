@@ -33,9 +33,9 @@ export default function App() {
   };
 
   const postBoard = () => {
-    console.log(boardState);
-    const user = 'thisisme';
-    axios.put('/updateboard', { user, boardState });
+    // check to see if this console log works
+    console.log(...gameInfo.user);
+    axios.put('/updateboard', { ...gameInfo.user, boardState });
   };
 
   const changeBoardState = (index) => {
