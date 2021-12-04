@@ -55,6 +55,10 @@ app.post('/addRoom/:room', (req, res) => {
   res.send('posted');
 });
 
+app.post('/newUser', (req, res) => {
+  // add the user
+});
+
 app.put('/updateboard', (req, res) => {
   console.log('put request', req.body);
   res.send('update this');
