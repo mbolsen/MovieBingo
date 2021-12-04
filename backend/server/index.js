@@ -40,7 +40,7 @@ app.post('/addRoom/:room', (req, res) => {
   console.log('room req', req.params.room);
   const data = {
     genre: defaultGenre,
-    room: req.params.room,
+    roomName: req.params.room,
     card: items,
   };
   const document = new Rooms(data);

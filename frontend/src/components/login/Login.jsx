@@ -20,8 +20,8 @@ export default function Login() {
       });
   };
 
-  const handleAddRoom = (event) => {
-    const room = event.target.newRoom.value;
+  const handleAddRoom = (room) => {
+    // const room = event.target.newRoom.value;
     axios.post(`/addRoom/${room}`)
       .then(
         handleGetRooms(),
@@ -39,7 +39,8 @@ export default function Login() {
       <div className="addRoom">
         <form onSubmit={(e) => {
           e.preventDefault();
-          handleAddRoom(e);
+          console.log(e.target.newRoom.value);
+          handleAddRoom(e.target.newRoom.value);
         }}
         >
           <label className="label">
