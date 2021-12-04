@@ -1,9 +1,8 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/extensions */
 /* eslint-disable react/function-component-definition */
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { shuffle, checkForWin } from '../helperFunctions.js';
 import Card from './card/Card.jsx';
 import Header from './header/Header.jsx';
@@ -13,7 +12,7 @@ export const BingoContext = React.createContext();
 
 export default function App() {
   const [headerText, setHeaderText] = useState('Scary Movie Bingo');
-  const [gameInfo, setGameInfo] = useState({ room: null, user: null });
+  const [gameInfo, setGameInfo] = useState({ room: '-', user: 'empty' });
   const [boardState, setBoardState] = useState(
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   );
@@ -46,7 +45,7 @@ export default function App() {
 
   useEffect(() => {
     getItems();
-    return () => { setItems([]); };
+    return () => { setItems(); };
   }, []);
 
   useEffect(() => {
@@ -61,15 +60,16 @@ export default function App() {
     // return () => { setHeaderText([]); };
   }, [boardState]);
 
+  const values = useMemo(() => ({
+    items, changeBoardState, headerText, handleGameInfo, gameInfo,
+  }), []);
+
   return (
     <div>
-      <BingoContext.Provider value={{
-        items, changeBoardState, headerText, handleGameInfo, gameInfo,
-      }}
-      >
+      <BingoContext.Provider value={values}>
         <div>
           <Header />
-          { gameInfo.user
+          { (gameInfo.user !== 'empty')
             ? <Card />
             : <Login />}
         </div>
