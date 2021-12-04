@@ -62,6 +62,6 @@ app.put('/updateboard', (req, res) => {
   res.send('update this');
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log('\n------------------------------\nserver running\n------------------------------');
 });
