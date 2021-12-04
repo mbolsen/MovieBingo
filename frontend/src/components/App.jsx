@@ -58,9 +58,9 @@ export default function App() {
     // return () => { setHeaderText([]); };
   }, [boardState]);
 
-  const values = useMemo(() => ({
-    items, changeBoardState, headerText, handleGameInfo, gameInfo,
-  }), []);
+  // const values = useMemo(() => ({
+  //   items, changeBoardState, headerText, handleGameInfo, gameInfo,
+  // }), []);
 
   return (
     <div>
