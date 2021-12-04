@@ -55,7 +55,6 @@ export default function App() {
     } else if (check) {
       setHeaderText('!!!  WINNER  !!!');
     }
-    // return () => { setHeaderText([]); };
   }, [boardState]);
 
   // const values = useMemo(() => ({
@@ -63,7 +62,7 @@ export default function App() {
   // }), []);
 
   return (
-    <div>
+    <div className="main-container">
       <BingoContext.Provider value={{
         items, changeBoardState, headerText, handleGameInfo, gameInfo,
       }}
