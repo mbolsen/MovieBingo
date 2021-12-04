@@ -12,7 +12,7 @@ export const BingoContext = React.createContext();
 
 export default function App() {
   const [headerText, setHeaderText] = useState('Scary Movie Bingo');
-  const [gameInfo, setGameInfo] = useState({ room: '-', user: 'empty' });
+  const [gameInfo, setGameInfo] = useState({ room: '-', user: '-' });
   const [boardState, setBoardState] = useState(
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   );
@@ -27,13 +27,12 @@ export default function App() {
       });
   };
 
-  const handleGameInfo = ({ room, user }) => {
-    setGameInfo({ room, user });
+  const handleGameInfo = (obj) => {
+    console.log('here', obj);
+    setGameInfo(obj);
   };
 
   const postBoard = () => {
-    // check to see if this console log works
-    console.log(...gameInfo.user);
     axios.put('/updateboard', { ...gameInfo.user, boardState });
   };
 
@@ -46,12 +45,11 @@ export default function App() {
   useEffect(() => {
     getItems();
     return () => { setItems(); };
-  }, []);
+  }, [gameInfo]);
 
   useEffect(() => {
     postBoard();
     const check = checkForWin(boardState);
-    console.log(check);
     if (check === 'blackout') {
       setHeaderText('!!!! BLACKOUT !!!!');
     } else if (check) {
@@ -66,10 +64,13 @@ export default function App() {
 
   return (
     <div>
-      <BingoContext.Provider value={values}>
+      <BingoContext.Provider value={{
+        items, changeBoardState, headerText, handleGameInfo, gameInfo,
+      }}
+      >
         <div>
           <Header />
-          { (gameInfo.user !== 'empty')
+          { (gameInfo.user !== '-')
             ? <Card />
             : <Login />}
         </div>

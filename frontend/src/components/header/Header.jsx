@@ -10,7 +10,10 @@ export default function Header() {
   return (
     <div className="header">
       <h1 className="headerText">{ headerText }</h1>
-      <div>{ `Welcome ${gameInfo.user} to ${gameInfo.room}!` }</div>
+      { gameInfo.user !== '-'
+        ? <div>{ `Welcome ${gameInfo.user} to ${gameInfo.room}!` }</div>
+        : null}
+
     </div>
   );
 }
