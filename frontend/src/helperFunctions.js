@@ -8,7 +8,11 @@ export function shuffle(array) {
 }
 
 export function checkForWin(array) {
-  console.log('checking for a win');
+  // console.log('checking for a win');
+  // check for Blackout
+  if (array.indexOf(0) === -1) {
+    return 'blackout';
+  }
   // check rows
   for (let i = 0; i < array.length; i += 5) {
     if (array[i] + array[i + 1] + array[i + 2] + array[i + 3] + array[i + 4] === 5) {

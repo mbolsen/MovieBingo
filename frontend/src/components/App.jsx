@@ -7,11 +7,13 @@ import React, { useEffect, useState } from 'react';
 import { shuffle, checkForWin } from '../helperFunctions.js';
 import Card from './card/Card.jsx';
 import Header from './header/Header.jsx';
+import Login from './login/Login.jsx';
 
 export const BingoContext = React.createContext();
 
 export default function App() {
   const [headerText, setHeaderText] = useState('Scary Movie Bingo');
+  const [gameInfo, setGameInfo] = useState({ room: null, user: null });
   const [boardState, setBoardState] = useState(
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   );
@@ -24,6 +26,10 @@ export default function App() {
         console.log('response', response);
         setItems(shuffle(response.data));
       });
+  };
+
+  const handleGameInfo = ({ room, user }) => {
+    setGameInfo({ room, user });
   };
 
   const postBoard = () => {
@@ -44,19 +50,26 @@ export default function App() {
 
   useEffect(() => {
     postBoard();
-    if (checkForWin(boardState)) {
-      console.log('winner!!!');
+    const check = checkForWin(boardState);
+    console.log(check);
+    if (check === 'blackout') {
+      setHeaderText('!!!! BLACKOUT !!!!');
+    } else if (check) {
       setHeaderText('!!!  WINNER  !!!');
     }
   }, [boardState]);
 
   return (
     <div>
-      <BingoContext.Provider value={{ items, changeBoardState, headerText }}>
+      <BingoContext.Provider value={{
+        items, changeBoardState, headerText, handleGameInfo, gameInfo,
+      }}
+      >
         <div>
           <Header />
-          <Card />
-          {/* <div className="text">Hello There</div> */}
+          { gameInfo.user
+            ? <Card />
+            : <Login />}
         </div>
       </BingoContext.Provider>
     </div>

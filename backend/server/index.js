@@ -39,10 +39,22 @@ const items = ['Obvious fake moustache',
   'Light Doesn\'t work',
 ];
 
+const rooms = ['mattshouse'];
+
 app.get('/card', (req, res) => {
   // console.log(req);
   // the items will change when we set up the database
   res.send(items);
+});
+
+app.get('/getRooms', (req, res) => {
+  console.log(rooms);
+  res.send(rooms);
+});
+
+app.post('/addRoom/:room', (req, res) => {
+  console.log(req.params.room);
+  rooms.push(req.params.room);
 });
 
 app.put('/updateboard', (req, res) => {

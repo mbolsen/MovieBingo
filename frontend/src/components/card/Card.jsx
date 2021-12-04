@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/extensions */
@@ -6,7 +7,7 @@ import React, { useContext, useState } from 'react';
 import { BingoContext } from '../App.jsx';
 
 export default function Card() {
-  const [size, setSize] = useState(document.body.clientWidth / 5 - 6);
+  const [size, setSize] = useState(document.body.clientWidth / 5 - 6 - 10);
   const { items, changeBoardState } = useContext(BingoContext);
 
   const selectedColor = 'pink';

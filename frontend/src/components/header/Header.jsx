@@ -6,10 +6,11 @@ import { BingoContext } from '../App.jsx';
 // import { useState } from 'react-dom';
 
 export default function Header() {
-  const { headerText } = useContext(BingoContext);
+  const { headerText, gameInfo } = useContext(BingoContext);
   return (
     <div className="header">
-      <h1 className="headerText">{headerText}</h1>
+      <h1 className="headerText">{ headerText }</h1>
+      <div>{ `Welcome ${gameInfo.user} to ${gameInfo.room}!` }</div>
     </div>
   );
 }
