@@ -42,6 +42,11 @@ export default function App() {
     setBoardState(updatedBoard);
   };
 
+  const handleScreenSize = () => Math.min(
+    1400,
+    document.body.clientWidth / 5 - 6 - 10,
+  );
+
   useEffect(() => {
     getItems();
     return () => { setItems(); };
@@ -62,7 +67,7 @@ export default function App() {
   // }), []);
 
   return (
-    <div className="main-container">
+    <div id="main-container" className="main-container" style={{ width: `${handleScreenSize}px` }}>
       <BingoContext.Provider value={{
         items, changeBoardState, headerText, handleGameInfo, gameInfo,
       }}
