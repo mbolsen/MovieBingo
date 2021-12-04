@@ -46,6 +46,7 @@ export default function App() {
 
   useEffect(() => {
     getItems();
+    return () => { setItems([]); };
   }, []);
 
   useEffect(() => {
@@ -57,6 +58,7 @@ export default function App() {
     } else if (check) {
       setHeaderText('!!!  WINNER  !!!');
     }
+    // return () => { setHeaderText([]); };
   }, [boardState]);
 
   return (
