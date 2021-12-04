@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
+const { exec } = require('child_process');
 const express = require('express');
 const path = require('path');
+const { db, Genres, Rooms } = require('../database/index');
 
 const app = express();
 app.use(express.json());
@@ -8,53 +10,49 @@ app.use(express.json());
 app.use('/', express.static(path.join(__dirname, '..', '..', 'frontend', 'dist')));
 const port = 3000;
 
-const items = ['Obvious fake moustache',
-  'Squeaky door sound',
-  'First person view',
-  'Going rouge',
-  'Old truck',
-  'Vehicle breakdown',
-  'No phone service',
-  'Obsolete tech',
-  'Hiding under a bed',
-  'Costumes',
-  'Dirty bathroom',
-  'Black and White film',
-  'Unconventional weapon',
-  'Bad accent',
-  'Law enforcement',
-  'Mental hospital',
-  'Car ride conversation',
-  'Close call',
-  'Plot call back',
-  'Mental breakdown',
-  'attempted first aid',
-  'Black Nail Polish',
-  'Phone Ringing',
-  'Disturbing Childrens Toy',
-  'Irate Elderly',
-  'Hitchhiker',
-  'Chase Sequence',
-  'Vehicle Breaks Down',
-  'Light Doesn\'t work',
-];
+const items = ['Obvious fake moustache', 'Squeaky door sound', 'First person view', 'Going rouge', 'Old truck', 'Vehicle breakdown', 'No phone service', 'Obsolete tech', 'Hiding under a bed', 'Costumes', 'Dirty bathroom', 'Black and White film', 'Unconventional weapon', 'Bad accent', 'Law enforcement', 'Mental hospital', 'Car ride conversation', 'Close call', 'Plot call back', 'Mental breakdown', 'attempted first aid', 'Black Nail Polish', 'Phone Ringing', 'Disturbing Childrens Toy', 'Irate Elderly', 'Hitchhiker', 'Chase Sequence', 'Vehicle Breaks Down', 'Light Doesn\'t work'];
 
-const rooms = ['mattshouse'];
+// const rooms = ['mattshouse'];
 
 app.get('/card', (req, res) => {
-  // console.log(req);
   // the items will change when we set up the database
-  res.send(items);
+  Genres
+    .findOne({ genre: 'Scary Movie' })
+    .exec((err, data) => {
+      console.log('data from genre get', data);
+      res.send(data);
+    });
 });
 
 app.get('/getRooms', (req, res) => {
-  console.log(rooms);
-  res.send(rooms);
+  Rooms
+    .find({ genre: 'Scary Movie' })
+    .exec((err, data) => {
+      console.log('data from genre get', data);
+      const rooms = data.map((item) => item.roomName);
+      res.send(rooms);
+    });
 });
 
 app.post('/addRoom/:room', (req, res) => {
-  console.log(req.params.room);
-  rooms.push(req.params.room);
+  const defaultGenre = 'Scary Movie';
+  // const GameCard = axios.get('/card');
+  console.log('room req', req.params.room);
+  const data = {
+    genre: defaultGenre,
+    room: req.params.room,
+    card: items,
+  };
+  const document = new Rooms(data);
+  document.save((err, doc) => {
+    if (err) {
+      throw err;
+    } else {
+      console.log('ROOMS POST SUCCESS', doc);
+    }
+  });
+  // rooms.push(req.params.room);
+  res.send('posted');
 });
 
 app.put('/updateboard', (req, res) => {

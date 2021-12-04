@@ -15,7 +15,7 @@ export default function Login() {
   const handleGetRooms = () => {
     axios.get('/getRooms')
       .then((response) => {
-        console.log('get rooms now'),
+        console.log('get rooms now', response.data),
         setRooms(response.data);
       });
   };

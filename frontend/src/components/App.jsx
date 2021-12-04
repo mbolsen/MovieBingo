@@ -22,8 +22,8 @@ export default function App() {
     // call server and get card items
     axios.get('/card')
       .then((response) => {
-        console.log('response', response);
-        setItems(shuffle(response.data));
+        console.log('response', response.data.card);
+        setItems(shuffle(response.data.card));
       });
   };
 

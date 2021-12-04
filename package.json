@@ -7,11 +7,15 @@
     "node": "node backend/server/index.js",
     "react-dev": "webpack --config ./webpack.config.js --mode development -w"
   },
-  "eslintIgnore": ["hello.js", "frontend/dist/bundle.js"],
+  "eslintIgnore": [
+    "hello.js",
+    "frontend/dist/bundle.js"
+  ],
   "dependencies": {
     "axios": "^0.23.0",
     "express": "^4.17.1",
     "hot-loader": "0.0.0",
+    "mongoose": "^6.0.14",
     "nodemon": "^2.0.14",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
