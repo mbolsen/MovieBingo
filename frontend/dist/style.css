@@ -1,3 +1,85 @@
+:root{
+  --background: rgb(200, 200, 200);
+  --card-div: rgb(162, 123, 212);
+  --card-div-hover: rgb(2, 95, 218);
+  --text:rgb(146, 39, 207);
+}
+
 body {
-  background-color: aqua;
+  position: absolute;
+  width: 98vw;
+  background-color: var(--background);
+  text-align: center;
+}
+
+.text{
+  text-align: center;
+  /* font-size: 100%; */
+  color: var(--text);
+}
+
+.header{
+  height: 5%;
+}
+
+h1{
+  color: black;
+  font-size: 5vw;
+}
+
+.card{
+  display: flex;
+  background-color: black;
+  border: 3px solid black;
+  border-radius: 20px;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.card-col{
+  justify-content: space-evenly;
+}
+
+.card-div{
+  display: flex;
+  width: 100%;
+  height: 200px;
+  background-color: var(--card-div);
+  border: 2px solid black;
+  border-radius: 20px;
+  text-overflow: ellipsis;
+  align-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-direction: column;
+  padding: 2px;
+  font-size-adjust: 100%;
+  font-size: 180%;
+}
+
+p{
+  text-overflow: clip;
+}
+
+.card-div:hover{
+  background-color: var(--card-div-hover);
+}
+
+.form{
+  height: 10vh;
+  width: 40vw;
+  border: 1px solid black;
+  border-radius: 3vw;
+  margin: 20px;
+  font-size: 400%;
+  text-align: center;
+}
+
+.button{
+  height: 10vh;
+  width: 40vw;
+  border: 1px solid black;
+  border-radius: 5vw;
+  margin: 20px;
 }
