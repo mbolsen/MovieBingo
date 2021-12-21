@@ -67,7 +67,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 ## Getting Started
 
 To get a copy running:
-1. clone the repo    
+1. clone the repo -   
    ```sh
    git clone https://github.com/mbolsen/MovieBingo.git
    ```
@@ -81,30 +81,6 @@ To get a copy running:
   npm start
   ```
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/github_username/repo_name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -117,22 +93,6 @@ Use this space to show useful examples of how a project can be used. Additional 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [] Feature 1
-- [] Feature 2
-- [] Feature 3
-    - [] Nested Feature
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -160,24 +120,18 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Matt Olsen - [@twitter_handle](https://twitter.com/twitter_handle) - mbolsen@gmail.com
+Matt Olsen - mbolsen@gmail
 
 Project Link: [https://github.com/mbolsen/MovieBingo](https://github.com/mbolsen/MovieBingo)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
-* []()
-* []()
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
