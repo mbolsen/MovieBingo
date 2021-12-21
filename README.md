@@ -42,6 +42,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+Deployed link: [https://movie-bingo.herokuapp.com/](https://movie-bingo.herokuapp.com/)
 
 ![Screen Shot 2021-12-20 at 7 51 31 PM](https://user-images.githubusercontent.com/89269242/146862726-a33d1e22-10c5-4337-b3f4-c2d6da1d4d8b.png)
 
