@@ -61,8 +61,6 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -72,14 +70,14 @@ To get a copy running:
    git clone https://github.com/mbolsen/MovieBingo.git
    ```
 2. get the necessary libraries -   
-  ```sh
-  npm install npm@latest -g
-  ```
+   ```sh
+   npm install npm@latest -g
+   ```
 3. get your local mongodb running
 4. start the server -
-   ```sh
-  npm start
-  ```
+   ```sh 
+   npm start
+   ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
